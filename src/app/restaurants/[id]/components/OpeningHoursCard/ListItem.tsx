@@ -16,7 +16,7 @@ const ListItem: React.FC<ListItemProps> = ({ isToday, isClosed, day, slots }) =>
     timeSlots = <Typography color='grey'>Closed</Typography>;
   } else {
     timeSlots = (
-      <ul>
+      <ul className='flex flex-col items-end'>
         {slots.map((slot) => (
           <li key={slot.opening + slot.closing}>
             <Typography>{`${getTimeIn12HourFormat(slot.opening)} - ${getTimeIn12HourFormat(slot.closing)}`}</Typography>
