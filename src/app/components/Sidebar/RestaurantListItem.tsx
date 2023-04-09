@@ -27,7 +27,7 @@ const RestaurantListItem: React.FC<RestaurantListItemProps> = ({ restaurant }) =
       >
         <Typography variant='body-medium'>{restaurant.name}</Typography>
         {restaurant.image ? (
-          <Image src={restaurant.image} alt='Logo' width={35} height={35} />
+          <Image className='h-[35px]' src={restaurant.image} alt='Logo' width={35} height={35} />
         ) : (
           <StoreFrontIcon width={30} height={30} className='text-grey-3' />
         )}
