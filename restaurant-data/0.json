@@ -1,0 +1,29 @@
+{
+  "id": "0",
+  "name": "Burger King",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Burger_King_2020.svg",
+  "openingHours": {
+    "monday": [
+      { "type": "open", "value": 43200 },
+      { "type": "close", "value": 75600 }
+    ],
+    "tuesday": [
+      { "type": "open", "value": 36000 },
+      { "type": "close", "value": 64800 }
+    ],
+    "wednesday": [
+      { "type": "open", "value": 36000 },
+      { "type": "close", "value": 64800 }
+    ],
+    "thursday": [
+      { "type": "open", "value": 36000 },
+      { "type": "close", "value": 64800 }
+    ],
+    "friday": [
+      { "type": "open", "value": 36000 },
+      { "type": "close", "value": 64800 }
+    ],
+    "saturday": [],
+    "sunday": []
+  }
+}
