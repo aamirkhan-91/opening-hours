@@ -4,7 +4,6 @@
   "image": "https://upload.wikimedia.org/wikipedia/commons/3/36/McDonald%27s_Golden_Arches.svg",
   "openingHours": {
     "monday": [
-      { "type": "close", "value": 3600 },
       { "type": "open", "value": 43200 },
       { "type": "close", "value": 75600 }
     ],
@@ -24,7 +23,10 @@
     ],
     "sunday": [
       { "type": "close", "value": 3600 },
-      { "type": "open", "value": 36000 }
+      { "type": "open", "value": 43200 },
+      { "type": "close", "value": 57600 },
+      { "type": "open", "value": 64800 },
+      { "type": "close", "value": 73800 }
     ]
   }
 }

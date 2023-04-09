@@ -4,8 +4,11 @@
   "image": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Burger_King_2020.svg",
   "openingHours": {
     "monday": [
+      { "type": "close", "value": 3600 },
       { "type": "open", "value": 43200 },
-      { "type": "close", "value": 75600 }
+      { "type": "close", "value": 57600 },
+      { "type": "open", "value": 64800 },
+      { "type": "close", "value": 73800 }
     ],
     "tuesday": [
       { "type": "open", "value": 36000 },
@@ -24,6 +27,6 @@
       { "type": "close", "value": 64800 }
     ],
     "saturday": [],
-    "sunday": []
+    "sunday": [{ "type": "open", "value": 64800 }]
   }
 }

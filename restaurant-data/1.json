@@ -4,27 +4,30 @@
   "image": "https://upload.wikimedia.org/wikipedia/en/b/bf/KFC_logo.svg",
   "openingHours": {
     "monday": [
-      { "type": "close", "value": 3600 },
-      { "type": "open", "value": 43200 },
-      { "type": "close", "value": 75600 }
+      { "type": "open", "value": 32400 },
+      { "type": "close", "value": 79200 }
     ],
     "tuesday": [
-      { "type": "open", "value": 36000 },
-      { "type": "close", "value": 64800 }
+      { "type": "open", "value": 32400 },
+      { "type": "close", "value": 79200 }
     ],
-    "wednesday": [],
+    "wednesday": [
+      { "type": "open", "value": 32400 },
+      { "type": "close", "value": 79200 }
+    ],
     "thursday": [
-      { "type": "open", "value": 36000 },
-      { "type": "close", "value": 64800 }
+      { "type": "open", "value": 32400 },
+      { "type": "close", "value": 79200 }
     ],
-    "friday": [{ "type": "open", "value": 36000 }],
+    "friday": [{ "type": "open", "value": 64800 }],
     "saturday": [
       { "type": "close", "value": 3600 },
-      { "type": "open", "value": 36000 }
+      { "type": "open", "value": 43200 },
+      { "type": "close", "value": 82800 }
     ],
     "sunday": [
-      { "type": "close", "value": 3600 },
-      { "type": "open", "value": 36000 }
+      { "type": "open", "value": 32400 },
+      { "type": "close", "value": 0 }
     ]
   }
 }
