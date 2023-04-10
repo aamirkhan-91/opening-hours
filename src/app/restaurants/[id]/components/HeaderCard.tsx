@@ -14,7 +14,9 @@ const HeaderCard: React.FC<HeaderCardProps> = ({ restaurantData }) => {
   return (
     <div className='z-[2] flex w-full items-center justify-between rounded-md bg-white p-6 shadow-md'>
       <div>
-        <Typography variant='lg'>{restaurantData.name}</Typography>
+        <Typography size='lg' weight='medium'>
+          {restaurantData.name}
+        </Typography>
         {isClosed ? (
           <Typography color='grey' className='mt-1'>
             Closed today

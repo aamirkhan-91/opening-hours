@@ -56,7 +56,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
       <body className='h-full bg-black dark:bg-black xl:py-6'>
         <div className='relative mx-auto flex h-full flex-col overflow-hidden xl:max-h-[1000px] xl:max-w-[1200px] xl:rounded-lg xl:shadow-lg'>
           <Header />
-          <main className='flex h-full flex-grow'>
+          <main className='flex h-full flex-grow flex-col md:flex-row'>
             <Sidebar restaurants={restaurants} />
             {children}
           </main>

@@ -29,11 +29,11 @@ const ListItem: React.FC<ListItemProps> = ({ isToday, isClosed, day, slots }) =>
   return (
     <li className='flex items-center justify-between border-b-2 border-grey-2 py-2'>
       <div className='flex items-center'>
-        <Typography className='capitalize' variant='body-medium'>
+        <Typography className='capitalize' size='base' weight='medium'>
           {day}
         </Typography>
         {isToday ? (
-          <Typography className='ml-3' variant='sm' color='green'>
+          <Typography className='ml-3' size='sm' weight='bold' color='green'>
             TODAY
           </Typography>
         ) : null}

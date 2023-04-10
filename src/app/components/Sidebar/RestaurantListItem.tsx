@@ -1,5 +1,3 @@
-'use client';
-
 import Typography from '@core-components/Typography';
 import StoreFrontIcon from '@icons/Storefront';
 import { RestaurantData } from '@type-definitions/types';
@@ -7,6 +5,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useRef } from 'react';
 
 type RestaurantListItemProps = {
   restaurant: RestaurantData;
@@ -14,22 +13,40 @@ type RestaurantListItemProps = {
 
 const RestaurantListItem: React.FC<RestaurantListItemProps> = ({ restaurant }) => {
   const pathname = usePathname();
+  const ref = useRef<HTMLDivElement>(null);
+  const isActive = pathname.toLowerCase() === `/restaurants/${restaurant.id}`;
+
+  useEffect(() => {
+    if (isActive) {
+      setTimeout(() => {
+        if (ref.current) {
+          ref.current.scrollIntoView({
+            behavior: 'smooth',
+            inline: 'end',
+          });
+        }
+      }, 0);
+    }
+  }, [isActive]);
 
   return (
     <Link href={`restaurants/${restaurant.id}`}>
       <div
+        ref={ref}
         className={clsx(
-          'flex items-center justify-between border-b border-grey-2 px-4 py-4 transition-colors hover:bg-grey-1',
+          'flex min-w-[175px] flex-col-reverse items-center justify-between px-4 py-4 transition-colors hover:bg-grey-1 md:flex-row md:border-b md:border-grey-2',
           {
-            'bg-grey-2': pathname.toLowerCase() === `/restaurants/${restaurant.name.toLowerCase()}`,
+            'bg-grey-2': isActive,
           }
         )}
       >
-        <Typography variant='body-medium'>{restaurant.name}</Typography>
+        <Typography size='base' weight='normal'>
+          {restaurant.name}
+        </Typography>
         {restaurant.image ? (
-          <Image className='h-[35px]' src={restaurant.image} alt='Logo' width={35} height={35} />
+          <Image className='mb-1 h-[35px] md:mb-0' src={restaurant.image} alt='Logo' width={35} height={35} />
         ) : (
-          <StoreFrontIcon width={30} height={30} className='text-grey-3' />
+          <StoreFrontIcon width={30} height={30} className='mb-1 text-grey-3 md:mb-0' />
         )}
       </div>
     </Link>

@@ -16,9 +16,9 @@ const List: React.FC<ListProps> = ({ restaurants }) => {
   return (
     <>
       <SearchBar search={search} onChange={setSearch} />
-      <ul className='h-[calc(100%_-_138px)] overflow-y-auto border-t border-grey-2'>
+      <ul className='flex flex-row overflow-x-auto overflow-y-auto border-t border-grey-2 md:h-[calc(100%_-_138px)] md:flex-col md:overflow-x-hidden'>
         {restaurants
-          .filter((restaurant) => restaurant.name.toLowerCase().includes(search.toLowerCase()))
+          .filter((restaurant) => restaurant.name?.toLowerCase().includes(search.toLowerCase()))
           .map((restaurant) => (
             <li key={restaurant.name}>
               <RestaurantListItem restaurant={restaurant} />

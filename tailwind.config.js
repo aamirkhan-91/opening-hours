@@ -17,7 +17,8 @@ module.exports = {
       sans: ['var(--font-roboto)', 'sans-serif'],
     },
     fontSize: {
-      lg: ['24px', '30px'],
+      xl: ['24px', '30px'],
+      lg: ['20px', '28px'],
       base: ['16px', '22px'],
       sm: ['12px', '16px'],
     },

@@ -22,12 +22,16 @@ const getRestaurantData = async (id: number): Promise<RestaurantData | null> => 
 export const generateStaticParams = async () => {
   const files = await fs.readdir('restaurant-data');
 
-  return files
-    .filter((file) => path.extname(file).toLowerCase() === '.json')
-    .map((file) => file.slice(0, file.length - 5));
+  return (
+    files
+      // get only .json files
+      .filter((file) => path.extname(file).toLowerCase() === '.json')
+      //Remove .json extension
+      .map((file) => file.slice(0, file.length - 5))
+  );
 };
 
-const Home = async ({ params }: { params: { id: number } }) => {
+const RestaurantDetails = async ({ params }: { params: { id: number } }) => {
   const { id } = params;
   let restaurantData: RestaurantData | null;
 
@@ -37,14 +41,15 @@ const Home = async ({ params }: { params: { id: number } }) => {
     throw new Error('Someting went wrong. Please try again.');
   }
 
-  if (restaurantData === null) return null;
+  if (restaurantData === null)
+    throw new Error('A restaurant was not found for the provided ID. Please select one from the sidebar.');
 
   return (
-    <section className='flex flex-grow flex-col items-center bg-grey-2 p-4'>
+    <>
       <HeaderCard restaurantData={restaurantData} />
       <OpeningHoursCard restaurantData={restaurantData} />
-    </section>
+    </>
   );
 };
 
-export default Home;
+export default RestaurantDetails;

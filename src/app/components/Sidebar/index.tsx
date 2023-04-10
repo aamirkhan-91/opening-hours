@@ -8,7 +8,7 @@ type SidebarProps = {
 
 const Sidebar: React.FC<SidebarProps> = ({ restaurants }) => {
   return (
-    <aside className='z-[1] w-[300px] bg-white shadow-lg'>
+    <aside className='z-[1] w-full bg-white shadow-lg md:w-[300px]'>
       <RestaurantList restaurants={restaurants} />
     </aside>
   );
