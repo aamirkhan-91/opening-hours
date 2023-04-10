@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
+import tailwindColors from 'tailwindcss/colors';
+
 module.exports = {
   content: ['./src/pages/**/*.tsx', './src/core-components/**/*.tsx', './src/app/**/*.tsx'],
   theme: {
@@ -7,6 +9,11 @@ module.exports = {
       black: '#202125',
       white: '#fff',
       green: '#5bcb02',
+      red: {
+        light: tailwindColors.red[300],
+        DEFAULT: tailwindColors.red[500],
+        dark: tailwindColors.red[700],
+      },
       grey: {
         1: '#f8f8f8',
         2: '#eee',
