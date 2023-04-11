@@ -14,9 +14,14 @@ export async function POST(request: Request) {
 
     try {
       fs.writeFile(`restaurant-data/${id}.json`, JSON.stringify(json));
-      return new Response(null, {
-        status: 201,
-      });
+      return new Response(
+        JSON.stringify({
+          id,
+        }),
+        {
+          status: 201,
+        }
+      );
     } catch (_e: unknown) {
       return new Response(null, {
         status: 500,

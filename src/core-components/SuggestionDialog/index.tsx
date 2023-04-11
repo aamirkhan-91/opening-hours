@@ -57,9 +57,11 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
         });
 
         if (response.ok) {
+          const { id }: { id: string } = await response.json();
+
           alert('Restaurant has been successfully added.');
           onClose();
-          router.refresh();
+          router.push(`/restaurants/${id}`);
         } else {
           alert('ERROR');
         }
