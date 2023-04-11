@@ -33,7 +33,7 @@ const ListItem: React.FC<ListItemProps> = ({ isToday, isClosed, day, slots }) =>
           {day}
         </Typography>
         {isToday ? (
-          <Typography className='ml-3' size='sm' weight='bold' color='green'>
+          <Typography className='ml-3' size='xs' weight='bold' color='green'>
             TODAY
           </Typography>
         ) : null}
