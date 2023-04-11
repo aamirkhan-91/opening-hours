@@ -14,25 +14,27 @@ const List: React.FC<ListProps> = ({ openingHours }) => {
   return (
     <ul>
       {openingHoursEntries.map((entry, index) => {
-        const [day, openingHours] = entry;
+        const [day, openingHoursForDay] = entry;
 
-        const isClosed = !openingHours.length;
+        const isClosed = !openingHoursForDay.length;
         const slots: { opening: number; closing: number }[] = [];
 
         if (!isClosed) {
           // Find the index of the first opening on this day
-          const firstOpeningIndex = openingHours.findIndex((entry) => entry.type === 'open');
+          const firstOpeningIndex = openingHoursForDay.findIndex(
+            (openingHoursEntry) => openingHoursEntry.type === 'open'
+          );
 
-          for (let i = firstOpeningIndex; i < openingHours.length; i += 1) {
-            if (openingHours[i].type === 'open' && i < openingHours.length - 1) {
+          for (let i = firstOpeningIndex; i < openingHoursForDay.length; i += 1) {
+            if (openingHoursForDay[i].type === 'open' && i < openingHoursForDay.length - 1) {
               slots.push({
-                opening: openingHours[i].value,
-                closing: openingHours[i + 1].value,
+                opening: openingHoursForDay[i].value,
+                closing: openingHoursForDay[i + 1].value,
               });
             }
           }
 
-          const entryAtLastIndex = openingHours[openingHours.length - 1];
+          const entryAtLastIndex = openingHoursForDay[openingHoursForDay.length - 1];
           // Check if the last entry on this day is an opening and if so, retrieve the corresponding closing entry from the next day
           if (entryAtLastIndex.type === 'open') {
             const [, nextDayOpeningHours] = openingHoursEntries[(index + 1) % openingHoursEntries.length];
