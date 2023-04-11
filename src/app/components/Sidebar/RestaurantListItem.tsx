@@ -34,13 +34,13 @@ const RestaurantListItem: React.FC<RestaurantListItemProps> = ({ restaurant }) =
       <div
         ref={ref}
         className={clsx(
-          'flex min-w-[175px] flex-col-reverse items-center justify-between px-4 py-4 transition-colors hover:bg-grey-1 md:flex-row md:border-b md:border-grey-2',
+          'flex min-w-[175px] flex-col-reverse items-center justify-between px-4 py-4 transition-colors hover:bg-grey-1 md:flex-row md:border-b md:border-grey-2 dark:md:border-grey-3',
           {
-            'bg-grey-2': isActive,
+            'bg-grey-2 dark:bg-white': isActive,
           }
         )}
       >
-        <Typography size='base' weight='normal'>
+        <Typography size='base' weight='normal' className='text-black'>
           {restaurant.name}
         </Typography>
         {restaurant.image ? (

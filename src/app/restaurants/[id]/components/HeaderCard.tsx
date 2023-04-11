@@ -12,16 +12,12 @@ const HeaderCard: React.FC<HeaderCardProps> = ({ restaurantData }) => {
   const isClosed = isClosedToday(restaurantData.openingHours);
 
   return (
-    <div className='z-[2] flex w-full items-center justify-between rounded-md bg-white p-6 shadow-md'>
+    <div className='z-[2] flex w-full items-center justify-between rounded-md bg-foreground-light p-6 text-black shadow-md transition-colors dark:bg-foreground-dark dark:text-white'>
       <div>
         <Typography size='lg' weight='medium'>
           {restaurantData.name}
         </Typography>
-        {isClosed ? (
-          <Typography color='grey' className='mt-1'>
-            Closed today
-          </Typography>
-        ) : null}
+        {isClosed ? <Typography className='mt-1 text-black dark:text-white'>Closed today</Typography> : null}
       </div>
       {restaurantData.image ? (
         <Image

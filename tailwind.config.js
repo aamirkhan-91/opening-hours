@@ -3,9 +3,31 @@
 import tailwindColors from 'tailwindcss/colors';
 
 module.exports = {
+  darkMode: 'class',
   content: ['./src/pages/**/*.tsx', './src/core-components/**/*.tsx', './src/app/**/*.tsx'],
   theme: {
     colors: {
+      sidebar: {
+        dark: '#F4EEE0',
+        light: '#fff',
+      },
+      header: {
+        dark: '#39393A',
+        light: '#fff',
+      },
+      content: {
+        light: '#eee',
+        dark: '#a1a2a4',
+      },
+      background: {
+        dark: '#1E2341',
+        light: '#623A63',
+      },
+      foreground: {
+        // dark: '#373737',
+        dark: '#39393A',
+        light: '#fff',
+      },
       black: '#202125',
       white: '#fff',
       green: '#5bcb02',

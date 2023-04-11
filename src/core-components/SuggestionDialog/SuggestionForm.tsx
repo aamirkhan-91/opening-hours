@@ -42,7 +42,7 @@ const SuggestRestaurantForm: React.FC<SuggestRestaurantFormProps> = ({ isSubmitt
           />
         </li>
         <li>
-          <Typography size='sm' color='grey' className='mt-6 font-normal'>
+          <Typography size='sm' className='mt-6 font-normal text-grey-3'>
             Provide opening timeslots. Accepted format: Time in 12-hour format separated by a hypen. Provide multiple
             slots by adding a coma in between. Leave blank if closed.
           </Typography>

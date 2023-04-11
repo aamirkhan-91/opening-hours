@@ -7,7 +7,7 @@ type SearchBarProps = {
 
 const SearchBar: React.FC<SearchBarProps> = ({ search, onChange }) => {
   return (
-    <div className='relative mx-2 my-2 rounded-md border border-grey-2 px-2 py-2 shadow-md'>
+    <div className='relative mx-2 my-2 rounded-md border border-grey-2 bg-white px-2 py-2 shadow-md'>
       <input
         value={search}
         placeholder='Search restaurants'

@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .darkModeToggle {
+    @apply flex text-white;
+  }
+
+  .darkModeToggle label {
+    @apply relative mx-2 block h-[20px] w-[30px] cursor-pointer rounded-full bg-grey-3 transition;
+  }
+
+  .darkModeToggle label::after {
+    @apply absolute left-[1px] top-1/2 z-[1] h-[17px] w-[17px] -translate-y-1/2 rounded-full bg-white shadow-md transition;
+
+    content: '';
+  }
+
+  .darkModeToggle input:checked + label {
+    @apply bg-grey-2 transition-colors;
+  }
+
+  .darkModeToggle input:checked + label::after {
+    @apply -translate-y-1/2 translate-x-[11px] bg-grey-3;
+  }
+}
 
 .backdrop-enter {
   @apply bg-black/0;

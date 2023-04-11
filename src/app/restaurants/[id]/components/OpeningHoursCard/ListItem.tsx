@@ -13,13 +13,15 @@ const ListItem: React.FC<ListItemProps> = ({ isToday, isClosed, day, slots }) =>
   let timeSlots;
 
   if (isClosed) {
-    timeSlots = <Typography color='grey'>Closed</Typography>;
+    timeSlots = <Typography className='text-grey-3 dark:text-grey-2'>Closed</Typography>;
   } else {
     timeSlots = (
       <ul className='flex flex-col items-end'>
         {slots.map((slot) => (
           <li key={slot.opening + slot.closing}>
-            <Typography>{`${getTimeIn12HourFormat(slot.opening)} - ${getTimeIn12HourFormat(slot.closing)}`}</Typography>
+            <Typography className='text-black dark:text-white'>{`${getTimeIn12HourFormat(
+              slot.opening
+            )} - ${getTimeIn12HourFormat(slot.closing)}`}</Typography>
           </li>
         ))}
       </ul>
@@ -29,11 +31,11 @@ const ListItem: React.FC<ListItemProps> = ({ isToday, isClosed, day, slots }) =>
   return (
     <li className='flex items-center justify-between border-b-2 border-grey-2 py-2'>
       <div className='flex items-center'>
-        <Typography className='capitalize' size='base' weight='medium'>
+        <Typography size='base' weight='medium' className='capitalize text-black dark:text-white'>
           {day}
         </Typography>
         {isToday ? (
-          <Typography className='ml-3' size='xs' weight='bold' color='green'>
+          <Typography className='ml-3 text-green' size='xs' weight='bold'>
             TODAY
           </Typography>
         ) : null}
