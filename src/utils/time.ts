@@ -1,5 +1,26 @@
 import { DayOfTheWeek } from '@type-definitions/types';
 
+export const timeToSeconds = (input: string): number => {
+  const [number, amOrPm] = input.split(' ');
+
+  const numberNumeric = Number.parseInt(number, 10);
+
+  let seconds = 0;
+
+  if (amOrPm.toUpperCase() === 'AM') {
+    if (numberNumeric === 12) {
+      seconds = 0;
+    }
+
+    seconds = numberNumeric * 3600;
+  } else {
+    // Add the base seconds at 12 PM then add any additional hours
+    seconds = 43200 + numberNumeric * 3600;
+  }
+
+  return seconds;
+};
+
 const secondsToHoursAndMinutes = (
   seconds: number
 ): {

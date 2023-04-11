@@ -6,4 +6,4 @@ const nextConfig = {
   redirects: async () => [{ source: '/', destination: '/restaurants', permanent: true }],
   
 
-module.exports = nextConfig
+module.exports = nextConfig;

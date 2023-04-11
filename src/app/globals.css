@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.backdrop-enter {
+  @apply bg-black/0;
+}
+
+.backdrop-enter-active {
+  @apply bg-black/75 transition-colors duration-300;
+}
+
+.backdrop-enter-done {
+  @apply bg-black/75;
+}
+
+.backdrop-exit {
+  @apply bg-black/75;
+}
+
+.backdrop-exit-active {
+  @apply bg-black/0 transition duration-300;
+}
+
+.dialog-enter {
+  @apply left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.05] transform opacity-0;
+}
+
+.dialog-enter-active {
+  @apply left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-100 transform opacity-100 transition duration-300;
+}
+
+.dialog-enter-done {
+  @apply left-1/2
+  top-1/2 -translate-x-1/2 -translate-y-1/2 scale-100 transform;
+}
+
+.dialog-exit {
+  @apply left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-100 transform;
+}
+
+.dialog-exit-active {
+  @apply left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.05] transform opacity-0 transition duration-300;
+}

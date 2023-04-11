@@ -1,6 +1,7 @@
+import DarkModeToggle from '@core-components/DarkModeToggle';
 import Typography from '@core-components/Typography';
 
-// import SuggestionDialogButton from './SuggestionDialogButton';
+import SuggestionDialogButton from './SuggestionDialogButton';
 
 const Header: React.FC = () => {
   return (
@@ -8,7 +9,10 @@ const Header: React.FC = () => {
       <Typography size='xl' weight='bold' color='white'>
         Opening Hours
       </Typography>
-      {/* <SuggestionDialogButton /> */}
+      <div className='flex items-center space-x-2'>
+        <SuggestionDialogButton />
+        <DarkModeToggle />
+      </div>
     </header>
   );
 };
