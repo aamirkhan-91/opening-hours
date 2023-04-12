@@ -54,8 +54,8 @@ const SuggestRestaurantForm: React.FC<SuggestRestaurantFormProps> = ({ isSubmitt
                 </label>
                 <input
                   id={day}
-                  required
                   name={day}
+                  pattern='(([0-9])+\s(PM|AM)\s-\s([0-9])+\s(PM|AM))((,\s?)(([0-9])+\s(PM|AM)\s-\s([0-9])+\s(PM|AM)))*'
                   placeholder='E.g. 9 AM - 3 PM, 6 PM - 10 PM'
                   className='ml-auto w-full basis-2/3 rounded-md border border-grey-3 px-2 py-2  outline-none placeholder:text-sm'
                 />
