@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
+import useNotifications from '../../hooks/useNotifications';
 import Header from './SuggestionDialogHeader';
 import SuggestionForm from './SuggestionForm';
 
@@ -20,6 +21,7 @@ type SuggestionDialogProps = {
 const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
+  const { addNotification } = useNotifications();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -59,20 +61,37 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
         if (response.ok) {
           const { id }: { id: string } = await response.json();
 
-          alert('Restaurant has been successfully added.');
+          addNotification({
+            title: 'Success',
+            message: 'The restaurant has been successfully added.',
+            duration: 4000,
+            variant: 'success',
+          });
+
           onClose();
           router.push(`/restaurants/${id}`);
         } else {
-          alert('ERROR');
+          addNotification({
+            title: 'Error',
+            message: 'The restaurant has been successfully added.',
+            duration: 4000,
+            variant: 'error',
+          });
         }
       } catch (error: unknown) {
-        alert('An unexpected error occurred.');
+        addNotification({
+          title: 'Error',
+          message: 'An unexpected error occurred.',
+          duration: 4000,
+          variant: 'error',
+        });
       } finally {
         setIsSubmitting(false);
       }
     }
   };
 
+  // Should ideally use a portal here but seems like there is a bug using createPortal with Next.js 13
   return (
     <>
       <CSSTransition unmountOnExit timeout={300} in={show} classNames='backdrop'>

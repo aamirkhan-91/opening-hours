@@ -66,3 +66,15 @@
 .dialog-exit-active {
   @apply left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.05] transform opacity-0 transition duration-300;
 }
+
+.notification-enter {
+  @apply -translate-y-full scale-0 transform opacity-0;
+}
+
+.notification-enter-active {
+  @apply translate-y-0 scale-100 transform opacity-100 duration-300 ease-in;
+}
+
+.notification-exit-active {
+  @apply -translate-x-full scale-0 opacity-0 duration-300 ease-out;
+}

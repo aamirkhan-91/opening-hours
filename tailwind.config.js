@@ -24,13 +24,17 @@ module.exports = {
         light: '#623A63',
       },
       foreground: {
-        // dark: '#373737',
         dark: '#39393A',
         light: '#fff',
       },
+      blue: {
+        DEFAULT: tailwindColors.blue[500],
+      },
+      green: {
+        DEFAULT: '#5bcb02',
+      },
       black: '#202125',
       white: '#fff',
-      green: '#5bcb02',
       red: {
         light: tailwindColors.red[300],
         DEFAULT: tailwindColors.red[500],

@@ -1,11 +1,13 @@
 import './globals.css';
 
+import Notifications from '@core-components/Notifications';
 import { RestaurantData } from '@type-definitions/types';
 import clsx from 'clsx';
 import fs from 'fs/promises';
 import { Roboto } from 'next/font/google';
 import path from 'path';
 
+import NotificationsProvider from '../context/Notifications';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 
@@ -55,11 +57,14 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
     <html lang='en' className={clsx(roboto.variable, 'h-screen')}>
       <body className='h-full bg-black dark:bg-black xl:py-6'>
         <div className='relative mx-auto flex h-full flex-col overflow-hidden xl:max-h-[1000px] xl:max-w-[1200px] xl:rounded-lg xl:shadow-lg'>
-          <Header />
-          <main className='flex h-full flex-grow flex-col md:flex-row'>
-            <Sidebar restaurants={restaurants} />
-            {children}
-          </main>
+          <NotificationsProvider>
+            <Header />
+            <main className='flex h-full flex-grow flex-col md:flex-row'>
+              <Notifications />
+              <Sidebar restaurants={restaurants} />
+              {children}
+            </main>
+          </NotificationsProvider>
         </div>
       </body>
     </html>
