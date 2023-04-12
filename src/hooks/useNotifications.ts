@@ -1,8 +1,7 @@
+import { NotificationsContext } from '@context/Notifications';
 import { Notification } from '@type-definitions/notifications';
 import { nanoid } from 'nanoid';
 import { useContext } from 'react';
-
-import { NotificationsContext } from '../context/Notifications';
 
 const useNotifications = () => {
   const { notifications, dispatch } = useContext(NotificationsContext);

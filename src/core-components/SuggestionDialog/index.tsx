@@ -1,5 +1,6 @@
 'use client';
 
+import useNotifications from '@hooks/useNotifications';
 import { HoursByDayFormData } from '@type-definitions/forms';
 import { DayOfTheWeek, OpeningHours } from '@type-definitions/types';
 import { parse } from '@utils/parser';
@@ -7,7 +8,6 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-import useNotifications from '../../hooks/useNotifications';
 import Header from './SuggestionDialogHeader';
 import SuggestionForm from './SuggestionForm';
 

@@ -1,8 +1,8 @@
 'use client';
 
+import useNotifications from '@hooks/useNotifications';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import useNotifications from '../../hooks/useNotifications';
 import NotificationItem from './NotificationItem';
 
 const Notifications: React.FC = () => {

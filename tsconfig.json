@@ -22,6 +22,8 @@
     "paths": {
       "@type-definitions/*": ["./src/type-definitions/*"],
       "@core-components/*": ["./src/core-components/*"],
+      "@context/*": ["./src/context/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@icons/*": ["./src/icons/*"],
       "@utils/*": ["./src/utils/*"],
       "@data/*": ["./src/restaurant-data/*"]

@@ -64,7 +64,7 @@ const SuggestRestaurantForm: React.FC<SuggestRestaurantFormProps> = ({ isSubmitt
           </ul>
         </li>
       </ul>
-      <Button size='lg' type='submit' loading={isSubmitting}>
+      <Button type='submit' loading={isSubmitting}>
         Submit
       </Button>
     </form>

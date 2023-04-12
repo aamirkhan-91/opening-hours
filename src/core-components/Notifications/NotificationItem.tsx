@@ -1,10 +1,9 @@
 import Typography from '@core-components/Typography';
+import useNotifications from '@hooks/useNotifications';
 import CrossIcon from '@icons/Cross';
 import { Notification } from '@type-definitions/notifications';
 import { cva, VariantProps } from 'class-variance-authority';
 import { useEffect, useRef } from 'react';
-
-import useNotifications from '../../hooks/useNotifications';
 
 const notification = cva('relative w-[300px] rounded-lg text-white opacity-90 p-3 shadow-lg', {
   variants: {
