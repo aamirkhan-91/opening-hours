@@ -12,9 +12,9 @@ const HeaderCard: React.FC<HeaderCardProps> = ({ restaurantData }) => {
   const isClosed = isClosedToday(restaurantData.openingHours);
 
   return (
-    <div className='z-[2] flex w-full items-center justify-between rounded-md bg-foreground-light p-6 text-black shadow-md transition-colors dark:bg-foreground-dark dark:text-white'>
+    <div className='z-[2] flex w-full items-center justify-between rounded-md bg-foreground-light p-6 text-black shadow-md transition-colors dark:bg-foreground-dark'>
       <div>
-        <Typography size='lg' weight='medium'>
+        <Typography size='lg' className='text-black dark:text-white' weight='medium'>
           {restaurantData.name}
         </Typography>
         {isClosed ? <Typography className='mt-1 text-black dark:text-white'>Closed today</Typography> : null}

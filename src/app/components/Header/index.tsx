@@ -9,9 +9,9 @@ const Header: React.FC = () => {
       <Typography size='xl' weight='bold' className='text-black dark:text-white'>
         Opening Hours
       </Typography>
-      <div className='flex items-center space-x-2'>
+      <div className='flex items-center'>
         <SuggestionDialogButton />
-        <DarkModeToggle />
+        <DarkModeToggle className='ml-2' />
       </div>
     </header>
   );

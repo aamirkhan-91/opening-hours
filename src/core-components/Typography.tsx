@@ -17,6 +17,7 @@ const typography = cva('font-sans transition-colors', {
   },
   defaultVariants: {
     size: 'base',
+    weight: 'normal',
   },
 });
 

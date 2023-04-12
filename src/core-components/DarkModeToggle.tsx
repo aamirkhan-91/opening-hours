@@ -2,9 +2,14 @@
 
 import MoonIcon from '@icons/Moon';
 import SunIcon from '@icons/Sun';
+import clsx from 'clsx';
 import { useEffect, useId, useState } from 'react';
 
-const DarkModeToggle: React.FC = () => {
+type Props = {
+  className?: string;
+};
+
+const DarkModeToggle: React.FC<Props> = ({ className }) => {
   const [enabled, toggle] = useState(false);
   const checkboxId = useId();
 
@@ -23,7 +28,7 @@ const DarkModeToggle: React.FC = () => {
   }, [enabled]);
 
   return (
-    <div className='darkModeToggle'>
+    <div className={clsx('darkModeToggle', className)}>
       <SunIcon className='text-black transition-colors dark:text-white' width={20} height={20} />
       <input
         checked={enabled}
