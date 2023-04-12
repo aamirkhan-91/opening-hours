@@ -9,7 +9,7 @@ const Notifications: React.FC = () => {
   const { notifications } = useNotifications();
 
   return (
-    <TransitionGroup className='absolute left-4 top-4 z-20 transform space-y-4'>
+    <TransitionGroup component='ul' className='absolute left-4 top-4 z-20 transform space-y-4'>
       {notifications.map((notification) => (
         <CSSTransition key={notification.id} timeout={300} classNames='notification'>
           <NotificationItem {...notification} />

@@ -41,7 +41,7 @@ const NotificationItem: React.FC<Props> = ({ variant, id, message, title, durati
   }, []);
 
   return (
-    <div className={notification({ variant })}>
+    <li className={notification({ variant })}>
       <button className='absolute right-2 top-2' onClick={dismiss}>
         <CrossIcon width={20} height={20} />
       </button>
@@ -49,7 +49,7 @@ const NotificationItem: React.FC<Props> = ({ variant, id, message, title, durati
         {title}
       </Typography>
       <Typography size='sm'>{message}</Typography>
-    </div>
+    </li>
   );
 };
 
