@@ -13,6 +13,7 @@ export const parse = (hoursByDay: HoursByDayFormData): OpeningHours => {
     saturday: [],
     sunday: [],
   };
+  
   const days: DayOfTheWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
   for (let i = 0; i < days.length; i += 1) {

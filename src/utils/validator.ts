@@ -11,12 +11,11 @@ export function validateOpeningHours(input: unknown): boolean {
   }
 
   if (typeof input === 'object' && Array.isArray(input)) {
-    // object but an array
+    // Object but an array
     return false;
   }
 
-  // at this point we have determined that we have an "object"
-
+  // At this point we have determined that we have an "object"
   const keys: DayOfTheWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
   let hasValidData = true;
 

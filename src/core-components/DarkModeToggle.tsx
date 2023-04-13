@@ -31,7 +31,7 @@ const DarkModeToggle: React.FC<Props> = ({ className }) => {
     <div className={clsx('darkModeToggle', className)}>
       <SunIcon className='text-black transition-colors dark:text-white' width={20} height={20} />
       <input
-        checked={enabled}
+        defaultChecked={enabled}
         id={checkboxId}
         className='invisible h-0 w-0'
         type='checkbox'
