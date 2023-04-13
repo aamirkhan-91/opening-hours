@@ -3,7 +3,7 @@
 import MoonIcon from '@icons/Moon';
 import SunIcon from '@icons/Sun';
 import clsx from 'clsx';
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Props = {
   className?: string;
@@ -11,12 +11,9 @@ type Props = {
 
 const DarkModeToggle: React.FC<Props> = ({ className }) => {
   const [enabled, toggle] = useState(false);
-  const checkboxId = useId();
 
   useEffect(() => {
     const htmlElement = document.querySelector('html');
-
-    // todo use context?
 
     if (htmlElement) {
       if (enabled) {
@@ -28,19 +25,19 @@ const DarkModeToggle: React.FC<Props> = ({ className }) => {
   }, [enabled]);
 
   return (
-    <div className={clsx('darkModeToggle', className)}>
+    <button
+      className={clsx('darkModeToggle', className)}
+      aria-label='Toggle between darkmode and light mode'
+      onClick={() => toggle(!enabled)}
+    >
       <SunIcon className='text-black transition-colors dark:text-white' width={20} height={20} />
-      <input
-        defaultChecked={enabled}
-        id={checkboxId}
-        className='invisible h-0 w-0'
-        type='checkbox'
-        onClick={() => toggle(!enabled)}
+      <div
+        className={clsx({
+          enabled: enabled,
+        })}
       />
-      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-      <label htmlFor={checkboxId} />
       <MoonIcon className='text-black transition-colors dark:text-white' width={20} height={20} />
-    </div>
+    </button>
   );
 };
 
