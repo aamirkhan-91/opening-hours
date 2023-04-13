@@ -23,7 +23,7 @@ export async function POST(request: Request) {
         }
       );
     } catch (_e: unknown) {
-      return new Response(null, {
+      return new Response(JSON.stringify({ error: 'An unexpected error occurred. Please try again later.' }), {
         status: 500,
       });
     }

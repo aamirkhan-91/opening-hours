@@ -41,7 +41,7 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
     const hoursByDay: HoursByDayFormData = {} as HoursByDayFormData;
 
     days.forEach((day) => {
-      hoursByDay[day] = formData.get(day);
+      hoursByDay[day] = formData.get(day) as string;
     });
 
     data.openingHours = parse(hoursByDay);
@@ -71,9 +71,11 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
           onClose();
           router.push(`/restaurants/${id}`);
         } else {
+          const { error }: { error: string } = await response.json();
+
           addNotification({
             title: 'Error',
-            message: 'The restaurant has been successfully added.',
+            message: error,
             duration: 4000,
             variant: 'error',
           });
