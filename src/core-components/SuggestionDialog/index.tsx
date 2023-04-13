@@ -4,8 +4,9 @@ import useNotifications from '@hooks/useNotifications';
 import { HoursByDayFormData } from '@type-definitions/forms';
 import { DayOfTheWeek, OpeningHours } from '@type-definitions/types';
 import { parse } from '@utils/parser';
+import FocusTrap from 'focus-trap-react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import Header from './SuggestionDialogHeader';
@@ -16,12 +17,26 @@ type SuggestionDialogProps = {
   onClose: () => void;
 };
 
-// TODO: Accessibility pass & focus trap
-
 const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const { addNotification } = useNotifications();
+
+  const handleEscapeKeyPress = (event: KeyboardEvent) => {
+    event.stopPropagation();
+
+    if (event.code === 'Escape') {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleEscapeKeyPress);
+
+    return () => {
+      window.removeEventListener('keydown', handleEscapeKeyPress);
+    };
+  }, []);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -101,13 +116,19 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
         <div className='fixed left-0 top-0 z-[10] h-full w-full bg-black' role='presentation' />
       </CSSTransition>
       <CSSTransition unmountOnExit timeout={300} in={show} classNames='dialog'>
-        <div
-          className='absolute left-1/2 top-1/2 z-[11] mx-auto w-[calc(100%_-_20px)] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white pb-5 shadow-lg sm:w-[400px]'
-          role='dialog'
+        <FocusTrap
+          focusTrapOptions={{
+            escapeDeactivates: false,
+          }}
         >
-          <Header onClose={onClose} />
-          <SuggestionForm onSubmit={onSubmit} isSubmitting={isSubmitting} onCancel={onClose} />
-        </div>
+          <div
+            className='absolute left-1/2 top-1/2 z-[11] mx-auto w-[calc(100%_-_20px)] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white pb-5 shadow-lg sm:w-[400px]'
+            role='dialog'
+          >
+            <Header onClose={onClose} />
+            <SuggestionForm onSubmit={onSubmit} isSubmitting={isSubmitting} onCancel={onClose} />
+          </div>
+        </FocusTrap>
       </CSSTransition>
     </>
   );

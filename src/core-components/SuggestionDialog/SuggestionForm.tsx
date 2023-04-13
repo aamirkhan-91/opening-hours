@@ -22,7 +22,7 @@ const SuggestRestaurantForm: React.FC<SuggestRestaurantFormProps> = ({ isSubmitt
       <ul className='mb-4 w-full space-y-4'>
         <li>
           <label className='mb-1 block font-medium' htmlFor={nameId}>
-            Name
+            Name of Restaurant
           </label>
           <input
             required
@@ -33,7 +33,7 @@ const SuggestRestaurantForm: React.FC<SuggestRestaurantFormProps> = ({ isSubmitt
         </li>
         <li>
           <label className='mb-1 block font-medium' htmlFor={imageUrlId}>
-            Image URL
+            Logo image URL
           </label>
           <input
             required

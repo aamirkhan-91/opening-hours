@@ -9,7 +9,7 @@ const Header: React.FC<HeaderProps> = ({ onClose }) => (
   <header className='flex items-center justify-between pl-4 pr-2 pt-4'>
     <Typography size='lg'>Suggest new restaurant</Typography>
     <button
-      aria-label='Close dialog button'
+      aria-label='Close dialog'
       onClick={onClose}
       className='rounded-full bg-white p-1 transition-colors duration-300 hover:bg-grey-2'
     >
