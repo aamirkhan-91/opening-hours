@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# opening-hours
 
-## Getting Started
+## Quickstart
 
-First, run the development server:
+#### Installation
+
+```bash
+npm install
+```
+
+#### Start a development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**OR**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### Generate and serve a production build
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
+```bash
+npm run build # Generate build
+npm run start # Start server to serve production build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The application will be accessible at [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+#### Input files
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Input files are stored inside a folder called `restaurant-data` in the root project folder. There are four files already stored in the folder as seed data. Any additional restaurants that are added via the [suggest feature](#suggest-new-restaurant) .
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Please note that I added 3 additional fields to the schema to fulfil the use-cases I envisioned for the application.
+These fields are
 
-## Deploy on Vercel
+- id --- _to uniquely identify the different restaurants_
+- name --- _A human readable name for the restaurant_
+- image --- _A link to a logo for the restaurant_
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The opening hours data itself is stored in a field called `openingHours` and follows the same schema as provided in the assignment statement.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Viewing the opening hours
+
+Restaurants with valid data will show up in the sidebar. Clicking on a restaurant will open up its details in the main viewport to the right. Restaurants can also be filtered by name using the search-bar at the top.
+
+### Suggest new Restaurant
+
+The suggestion feature allows a user to "suggest" a restaurant they want to be added to the "database". This feature can be accessed via clicking on the 'Suggest Restaurant' button in the Header bar.
+
+Opening hours data can be input in a format that is similar to the expected output. E.g. you can provide
+
+```
+monday: 9 AM - 6 PM, 8 PM - 1 AM
+```
+
+and this will be stored as
+
+```json
+{
+  "monday": [
+    { "type": "open", "value": 32400 },
+    { "type": "close", "value": 64800 },
+    { "type": "open", "value": 72000 }
+  ],
+  "tuesday": [{ "type": "close", "value": 3600 }]
+}
+```
+
+Note: There is basic input validation on the opening hours data input fields that will prevent you from entering strings that are not according to the correct format, e.g. `9 AM` or `9 AM - 10`, however there are no guards in place to prevent valid format with invalid data, e.g. `100 AM - 56 PM`.
+
+### Dark Mode
+
+The application supports dark and light viewing modes, which can be toggled between using the toggle switch on the top right.
+
+## Thought process and choice of framework
+
+Initially I started off the assignment as a Single Page Application (SPA) using [Vite](https://vitejs.dev/). However, after meeting the minimum requirement of parsing and displaying the input data, I wanted to extend the application's functionality to cover a more real world use-case. After some thinking, I envisioned a potential use-case for the application to be one where end-users could open up a list of restaurants and check their opening hours.
+
+I chose Next.js 13 as my React framework of choice for a few reasons:
+
+- Next.js 13 came out with a new [App Router](https://beta.nextjs.org/docs/getting-started#introducing-the-app-router) that leverages [React Server Components (RSC)](https://nextjs.org/docs/advanced-features/react-18/server-components) to enable applications that span the server and client in a much more seamless way. I was meaning to try out the new features in a project and found this to be the perfect opportunity to do so!
+- The envisioned use-case for the application is perfect for leveraging Server Side Rendering. The opening hours data is static and therefore a user would benefit from the performance gains of having pages generated statically. In a real-world scenario, this would also be beneficial for SEO.
+- Since I wanted to have some kind of persistence of data and the ability to retrieve/mutate the data, I needed a server. One option was to set up a simple Node/Express app with a few routes to meet my required use-cases but I felt that this would complicate the assignment. I could also use Next.js so that I could leverage Node.js APIs to read and write the files and also setup routes from within the Next.js application itself, so I opted for this approach.
+
+## Testing
+
+I have setup some unit tests for the `src/utils` directory because this is where the bulk of the parsing is done.
+
+### Run tests
+
+Run tests with the following command:
+
+```bash
+npm run test
+```
