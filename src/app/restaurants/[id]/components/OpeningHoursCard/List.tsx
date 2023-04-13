@@ -1,4 +1,5 @@
 import { DayOfTheWeek, OpeningHours } from '@type-definitions/types';
+import { isClosedOnDay } from '@utils/restaurant';
 import { getDayOfTheWeek } from '@utils/time';
 
 import ListItem from './ListItem';
@@ -17,7 +18,7 @@ const List: React.FC<ListProps> = ({ openingHours }) => {
         try {
           const [day, openingHoursForDay] = entry;
 
-          const isClosed = !openingHoursForDay.length;
+          const isClosed = isClosedOnDay(openingHoursForDay);
           const slots: { opening: number; closing: number }[] = [];
 
           if (!isClosed) {
@@ -58,7 +59,7 @@ const List: React.FC<ListProps> = ({ openingHours }) => {
             />
           );
         } catch (error) {
-          throw new Error('Invalid data.')
+          throw new Error('Invalid data.');
         }
       })}
     </ul>

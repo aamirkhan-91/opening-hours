@@ -1,9 +1,11 @@
-import { OpeningHours } from '@type-definitions/types';
+import { OpeningHoursEntry } from '@type-definitions/types';
 
-import { getDayOfTheWeek } from './time';
+export const isClosedOnDay = (openingHoursEntries: OpeningHoursEntry[]): boolean => {
+  if (!openingHoursEntries.length) {
+    return true;
+  } else if (openingHoursEntries.length === 1 && openingHoursEntries[0].type === 'close') {
+    return true;
+  }
 
-export const isClosedToday = (openingHours: OpeningHours): boolean => {
-  const today = getDayOfTheWeek(new Date().getDay());
-  const hoursToday = openingHours[today];
-  return Boolean(!hoursToday.length);
+  return false;
 };
