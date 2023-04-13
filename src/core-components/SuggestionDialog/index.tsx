@@ -16,7 +16,7 @@ type SuggestionDialogProps = {
   onClose: () => void;
 };
 
-// TODO: Accessibility pass
+// TODO: Accessibility pass & focus trap
 
 const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -58,6 +58,7 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
           body: JSON.stringify(data),
         });
 
+        // TODO: Check all error/success cases
         if (response.ok) {
           const { id }: { id: string } = await response.json();
 
@@ -93,7 +94,7 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
     }
   };
 
-  // Should ideally use a portal here but seems like there is a bug using createPortal with Next.js 13
+  // Should ideally use a portal here but seems like there is a bug using createPortal with Next.js 13 causing 500 Server Error when rendering a page on the server
   return (
     <>
       <CSSTransition unmountOnExit timeout={300} in={show} classNames='backdrop'>
@@ -105,7 +106,7 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
           role='dialog'
         >
           <Header onClose={onClose} />
-          <SuggestionForm onSubmit={onSubmit} isSubmitting={isSubmitting} />
+          <SuggestionForm onSubmit={onSubmit} isSubmitting={isSubmitting} onCancel={onClose} />
         </div>
       </CSSTransition>
     </>

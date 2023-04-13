@@ -8,9 +8,10 @@ import { useId } from 'react';
 type SuggestRestaurantFormProps = {
   isSubmitting?: boolean;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  onCancel: () => void;
 };
 
-const SuggestRestaurantForm: React.FC<SuggestRestaurantFormProps> = ({ isSubmitting = false, onSubmit }) => {
+const SuggestRestaurantForm: React.FC<SuggestRestaurantFormProps> = ({ isSubmitting = false, onSubmit, onCancel }) => {
   const nameId = useId();
   const imageUrlId = useId();
 
@@ -64,9 +65,14 @@ const SuggestRestaurantForm: React.FC<SuggestRestaurantFormProps> = ({ isSubmitt
           </ul>
         </li>
       </ul>
-      <Button type='submit' loading={isSubmitting}>
-        Submit
-      </Button>
+      <div className='mt-4 flex w-full flex-col-reverse sm:flex-row sm:flex-row sm:space-x-2 sm:space-y-0'>
+        <Button className='mt-2 sm:mt-0' fullWidth variant='danger' type='button' onClick={() => onCancel()}>
+          Cancel
+        </Button>
+        <Button fullWidth type='submit' loading={isSubmitting}>
+          Submit
+        </Button>
+      </div>
     </form>
   );
 };
