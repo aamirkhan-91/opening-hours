@@ -3,6 +3,10 @@ import { DayOfTheWeek } from '@type-definitions/types';
 export const timeToSeconds = (input: string): number => {
   const [number, amOrPm] = input.split(' ');
 
+  if (!number || !amOrPm) {
+    throw new Error('Invalid input provided.');
+  }
+
   const numberNumeric = Number.parseInt(number, 10);
 
   let seconds = 0;
@@ -10,12 +14,16 @@ export const timeToSeconds = (input: string): number => {
   if (amOrPm.toUpperCase() === 'AM') {
     if (numberNumeric === 12) {
       seconds = 0;
+    } else {
+      seconds = numberNumeric * 3600;
     }
-
-    seconds = numberNumeric * 3600;
   } else {
-    // Add the base seconds at 12 PM then add any additional hours
-    seconds = 43200 + numberNumeric * 3600;
+    if (numberNumeric === 12) {
+      seconds = 43200;
+    } else {
+      // Add the base seconds at 12 PM then add any additional hours
+      seconds = 43200 + numberNumeric * 3600;
+    }
   }
 
   return seconds;
@@ -65,8 +73,7 @@ const secondsToHoursAndMinutes = (
 
 export const getTimeIn12HourFormat = (seconds: number): string => {
   if (seconds > 86399) {
-    // TODO: Handle this case gracefully
-    console.log('Error');
+    throw new Error('Maximum allowed seconds value exceeded.');
   }
 
   const timeBreakdown = secondsToHoursAndMinutes(seconds);
