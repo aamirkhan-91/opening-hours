@@ -1,0 +1,16 @@
+A more detailed guide can be found in the README.md file, which is also available on this project's github repository: https://github.com/aamirkhan-91/opening-hours#opening-hours
+
+Quickstart 
+
+1. npm install
+
+--- Start a development server ---
+
+2. npm run dev
+
+--- Generate and serve a production build ---
+
+2. npm run build # Generate build
+3. npm run start # Start server to serve production build
+
+The application will be accessible at http://localhost:3000
