@@ -34,24 +34,17 @@ const getRestaurantList = async (): Promise<RestaurantData[]> => {
     } catch (e: unknown) {
       if (e instanceof SyntaxError) {
         console.log(`${file} has malformed JSON, it will be ignored.`);
-      }
-
+      } else {
       console.log(e);
     }
+  }
   }
 
   return restaurantData;
 };
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
-  let restaurants;
-
-  // TODO: Error handling. Do we need to throw an error?
-  try {
-    restaurants = await getRestaurantList();
-  } catch (e) {
-    throw new Error('Someting went wrong. Please try again.');
-  }
+  const restaurants = await getRestaurantList();
 
   return (
     <html lang='en' className={clsx(roboto.variable, 'h-screen')}>

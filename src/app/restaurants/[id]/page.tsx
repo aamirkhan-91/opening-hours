@@ -12,7 +12,7 @@ const getRestaurantData = async (id: number): Promise<RestaurantData | null> => 
     fileData = JSON.parse(await fs.readFile(path.join('restaurant-data', `${id}.json`), 'utf8'));
   } catch (e: unknown) {
     if (e instanceof SyntaxError) {
-      console.log(`${id} has malformed JSON, it will be ignored.`);
+      console.log(`${id}.json has malformed JSON, it will be ignored.`);
     }
   }
 
@@ -33,16 +33,11 @@ export const generateStaticParams = async () => {
 
 const RestaurantDetails = async ({ params }: { params: { id: number } }) => {
   const { id } = params;
-  let restaurantData: RestaurantData | null;
+  const restaurantData = await getRestaurantData(id);
 
-  try {
-    restaurantData = await getRestaurantData(id);
-  } catch (e) {
-    throw new Error('Someting went wrong. Please try again.');
-  }
-
-  if (restaurantData === null)
+  if (restaurantData === null) {
     throw new Error('A restaurant was not found for the provided ID. Please select one from the sidebar.');
+  }
 
   return (
     <>
