@@ -29,7 +29,7 @@ The application will be accessible at [http://localhost:3000](http://localhost:3
 
 #### Input files
 
-Input files are stored inside a folder called `restaurant-data` in the root project folder. There are four files already stored in the folder as seed data. Any additional restaurants that are added via the [suggest feature](#suggest-new-restaurant) .
+Input files are stored inside a folder called `restaurant-data` in the root project folder. There are four files already stored in the folder as seed data. Any additional restaurants that are added via the [suggest feature](#suggest-new-restaurant) will also be populated in this folder.
 
 Please note that I added 3 additional fields to the schema to fulfil the use-cases I envisioned for the application.
 These fields are
@@ -37,6 +37,8 @@ These fields are
 - id --- _to uniquely identify the different restaurants_
 - name --- _A human readable name for the restaurant_
 - image --- _A link to a logo for the restaurant_
+
+A file's name must be the same as its id. This will happen automatically for any files added via the Suggest Feature, but will have to be ensured for manually added files.
 
 The opening hours data itself is stored in a field called `openingHours` and follows the same schema as provided in the assignment statement.
 
@@ -66,8 +68,6 @@ and this will be stored as
   "tuesday": [{ "type": "close", "value": 3600 }]
 }
 ```
-
-Note: There is basic input validation on the opening hours data input fields that will prevent you from entering strings that are not according to the correct format, e.g. `9 AM` or `9 AM - 10`, however there are no guards in place to prevent valid format with invalid data, e.g. `100 AM - 56 PM`.
 
 ### Dark Mode
 
