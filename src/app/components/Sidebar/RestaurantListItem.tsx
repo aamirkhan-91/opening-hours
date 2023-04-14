@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type RestaurantListItemProps = {
   restaurant: RestaurantData;
@@ -15,6 +15,8 @@ const RestaurantListItem: React.FC<RestaurantListItemProps> = ({ restaurant }) =
   const pathname = usePathname();
   const ref = useRef<HTMLDivElement>(null);
   const isActive = pathname.toLowerCase() === `/restaurants/${restaurant.id}`;
+
+  const [imageHasError, setImageHasError] = useState(false);
 
   useEffect(() => {
     if (isActive) {
@@ -44,10 +46,17 @@ const RestaurantListItem: React.FC<RestaurantListItemProps> = ({ restaurant }) =
         <Typography size='base' weight='normal' className='text-black'>
           {restaurant.name}
         </Typography>
-        {restaurant.image ? (
-          <Image className='mb-1 h-[35px] md:mb-0' src={restaurant.image} alt='Logo' width={35} height={35} />
-        ) : (
+        {!restaurant.image || imageHasError ? (
           <StoreFrontIcon width={30} height={30} className='mb-1 text-grey-3 md:mb-0' />
+        ) : (
+          <Image
+            className='mb-1 h-[35px] md:mb-0'
+            src={restaurant.image}
+            alt={`${restaurant.name} logo`}
+            width={35}
+            height={35}
+            onError={() => setImageHasError(true)}
+          />
         )}
       </div>
     </Link>
