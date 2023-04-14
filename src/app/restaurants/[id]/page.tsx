@@ -1,5 +1,6 @@
 import { RestaurantData } from '@type-definitions/types';
 import fs from 'fs/promises';
+import { Metadata } from 'next';
 import path from 'path';
 
 import HeaderCard from './components/HeaderCard';
@@ -18,6 +19,26 @@ const getRestaurantData = async (id: number): Promise<RestaurantData | null> => 
 
   return fileData;
 };
+
+export async function generateMetadata({ params: { id } }: { params: { id: number } }): Promise<Metadata> {
+  let fileData: RestaurantData | null = null;
+
+  try {
+    fileData = JSON.parse(await fs.readFile(path.join('restaurant-data', `${id}.json`), 'utf8'));
+
+    return {
+      title: `${fileData?.name} Opening Hours`,
+    };
+  } catch (e: unknown) {
+    if (e instanceof SyntaxError) {
+      console.log(`${id}.json has malformed JSON, it will be ignored.`);
+    }
+
+    return {
+      title: 'Restaurant Opening Hours',
+    };
+  }
+}
 
 export const generateStaticParams = async () => {
   const files = await fs.readdir('restaurant-data');
