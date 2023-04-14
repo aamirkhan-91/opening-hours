@@ -11,7 +11,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ search, onChange }) => {
       <input
         value={search}
         placeholder='Search restaurants'
-        className='w-full indent-2 text-grey-3 outline-none'
+        className='w-full indent-2 text-black outline-none'
         onChange={({ target: { value } }) => onChange(value)}
       />
       <SearchIcon className='absolute right-3 top-1/2 -translate-y-1/2 text-grey-3' />

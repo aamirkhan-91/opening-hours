@@ -64,7 +64,7 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
     } catch (error: unknown) {
       if (error instanceof Error) {
         addNotification({
-          title: 'Invalid input',
+          title: 'Error',
           message: error.message,
           variant: 'error',
           duration: 10000,
@@ -91,7 +91,7 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
           addNotification({
             title: 'Success',
             message: 'The restaurant has been successfully added.',
-            duration: 4000,
+            duration: 5000,
             variant: 'success',
           });
 
@@ -103,7 +103,7 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
           addNotification({
             title: 'Error',
             message: error,
-            duration: 4000,
+            duration: 5000,
             variant: 'error',
           });
         }
@@ -111,7 +111,7 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
         addNotification({
           title: 'Error',
           message: 'An unexpected error occurred.',
-          duration: 4000,
+          duration: 5000,
           variant: 'error',
         });
       } finally {
