@@ -8,11 +8,9 @@ type RestaurantErrorPageProps = {
 
 const RestaurantErrorPage: React.FC<RestaurantErrorPageProps> = ({ error: { message } }) => {
   return (
-    <>
-      <Typography className='my-auto text-center text-red' size='base' weight='medium'>
-        {message}
-      </Typography>
-    </>
+    <Typography className='my-auto text-center text-red' size='base' weight='medium'>
+      {message}
+    </Typography>
   );
 };
 

@@ -7,7 +7,7 @@ const typography = cva('font-sans transition-colors', {
       sm: ['text-sm'],
       base: ['text-base'],
       lg: ['text-lg'],
-      xl: ['text-lg md:text-xl'],
+      xl: ['text-xl'],
     },
     weight: {
       normal: ['font-normal'],

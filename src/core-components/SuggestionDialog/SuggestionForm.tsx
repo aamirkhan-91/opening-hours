@@ -65,7 +65,7 @@ const SuggestRestaurantForm: React.FC<SuggestRestaurantFormProps> = ({ isSubmitt
           </ul>
         </li>
       </ul>
-      <div className='mt-4 flex w-full flex-col-reverse sm:flex-row sm:flex-row sm:space-x-2 sm:space-y-0'>
+      <div className='mt-4 flex w-full flex-col-reverse sm:flex-row sm:space-x-2 sm:space-y-0'>
         <Button className='mt-2 sm:mt-0' fullWidth variant='danger' type='button' onClick={() => onCancel()}>
           Cancel
         </Button>

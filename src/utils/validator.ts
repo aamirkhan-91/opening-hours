@@ -17,25 +17,29 @@ export function validateOpeningHours(input: unknown): boolean {
 
   // At this point we have determined that we have an "object"
   const keys: DayOfTheWeek[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-  let hasValidData = true;
+  let hasValidSchema = true;
 
   for (let i = 0; i < keys.length; i += 1) {
     if (!Object.hasOwn(input, keys[i])) {
-      hasValidData = false;
+      hasValidSchema = false;
       break;
     }
   }
 
-  if (hasValidData) {
+  if (hasValidSchema) {
     const values = Object.values(input);
 
     for (let i = 0; i < keys.length; i += 1) {
       if (!Array.isArray(values[i])) {
-        hasValidData = false;
+        hasValidSchema = false;
         break;
       }
     }
   }
 
-  return hasValidData;
+  if (!hasValidSchema) {
+    return false;
+  }
+
+  return hasValidSchema;
 }

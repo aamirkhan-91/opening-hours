@@ -35,9 +35,9 @@ const getRestaurantList = async (): Promise<RestaurantData[]> => {
       if (e instanceof SyntaxError) {
         console.log(`${file} has malformed JSON, it will be ignored.`);
       } else {
-      console.log(e);
+        console.log(e);
+      }
     }
-  }
   }
 
   return restaurantData;

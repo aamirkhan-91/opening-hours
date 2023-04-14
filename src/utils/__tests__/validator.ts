@@ -57,6 +57,4 @@ describe('validator:validateOpeningHours', () => {
       })
     ).toBe(true);
   });
-
-  // TODO: Update if additional validation is added
 });
