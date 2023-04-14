@@ -79,13 +79,13 @@ const secondsToHoursAndMinutes = (
   };
 };
 
-export const getTimeIn12HourFormat = (seconds: number): string => {
+export const getTimeIn12HourFormat = (seconds: number): string | null => {
   if (seconds > 86399) {
-    throw new Error('Maximum allowed seconds value exceeded.');
+    return null;
   }
 
   if (seconds < 0) {
-    throw new Error('Minimum allowed seconds value exceeded.');
+    return null;
   }
 
   const timeBreakdown = secondsToHoursAndMinutes(seconds);

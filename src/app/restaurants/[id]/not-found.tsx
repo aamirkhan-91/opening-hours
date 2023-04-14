@@ -1,6 +1,6 @@
 import Typography from '@core-components/Typography';
 
-const RestaurantPage = async () => {
+const RestaurantNotFound: React.FC = () => {
   return (
     <Typography size='lg' className='my-auto text-center text-black dark:text-white'>
       Select a restaurant from the sidebar.
@@ -8,4 +8,4 @@ const RestaurantPage = async () => {
   );
 };
 
-export default RestaurantPage;
+export default RestaurantNotFound;

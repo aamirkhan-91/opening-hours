@@ -1,6 +1,7 @@
 import { RestaurantData } from '@type-definitions/types';
 import fs from 'fs/promises';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import path from 'path';
 
 import HeaderCard from './components/HeaderCard';
@@ -57,7 +58,7 @@ const RestaurantDetails = async ({ params }: { params: { id: number } }) => {
   const restaurantData = await getRestaurantData(id);
 
   if (restaurantData === null) {
-    throw new Error('A restaurant was not found for the provided ID. Please select one from the sidebar.');
+    notFound();
   }
 
   return (

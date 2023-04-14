@@ -5,7 +5,7 @@ import { RestaurantData } from '@type-definitions/types';
 import List from './List';
 
 type OpeningHoursCardProps = {
-  restaurantData: RestaurantData | null;
+  restaurantData: RestaurantData;
 };
 
 const OpeningHoursCard: React.FC<OpeningHoursCardProps> = ({ restaurantData }) => {
@@ -17,11 +17,7 @@ const OpeningHoursCard: React.FC<OpeningHoursCardProps> = ({ restaurantData }) =
           Opening hours
         </Typography>
       </header>
-      {restaurantData === null ? (
-        <Typography>Invalid data</Typography>
-      ) : (
-        <List openingHours={restaurantData?.openingHours} />
-      )}
+      <List openingHours={restaurantData?.openingHours} />
     </div>
   );
 };

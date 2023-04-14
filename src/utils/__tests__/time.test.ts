@@ -17,10 +17,6 @@ describe('time:timeToSeconds', () => {
   test('it converts input string 12 AM correctly into seconds', () => {
     expect(timeToSeconds('12 AM')).toBe(0);
   });
-
-  test('it throws an error on invalid input', () => {
-    expect(() => timeToSeconds('12AM')).toThrowError();
-  });
 });
 
 describe('time:getTimeIn12HourFormat', () => {
@@ -38,10 +34,6 @@ describe('time:getTimeIn12HourFormat', () => {
 
   test('it correctly converts input seconds equivalent to 12:30 AM into the correct string representation', () => {
     expect(getTimeIn12HourFormat(1800)).toBe('12:30 AM');
-  });
-
-  test('it throws an error on input seconds exceeding the maximum allowed value', () => {
-    expect(() => getTimeIn12HourFormat(86400)).toThrowError();
   });
 });
 

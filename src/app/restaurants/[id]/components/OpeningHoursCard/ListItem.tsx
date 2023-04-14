@@ -17,13 +17,24 @@ const ListItem: React.FC<ListItemProps> = ({ isToday, isClosed, day, slots }) =>
   } else {
     timeSlots = (
       <ul className='flex flex-col items-end'>
-        {slots.map((slot) => (
-          <li key={slot.opening + slot.closing}>
-            <Typography className='text-black dark:text-white'>{`${getTimeIn12HourFormat(
-              slot.opening
-            )} - ${getTimeIn12HourFormat(slot.closing)}`}</Typography>
-          </li>
-        ))}
+        {slots.map((slot, index) => {
+          const opening = getTimeIn12HourFormat(slot.opening);
+          const closing = getTimeIn12HourFormat(slot.closing);
+
+          if (opening && closing) {
+            return (
+              <li key={slot.opening + slot.closing}>
+                <Typography className='text-black dark:text-white'>{`${opening} - ${closing}`}</Typography>
+              </li>
+            );
+          } else {
+            return (
+              <Typography key={`${index}_invalid`} className='text-black dark:text-white'>
+                Invalid data.
+              </Typography>
+            );
+          }
+        })}
       </ul>
     );
   }
