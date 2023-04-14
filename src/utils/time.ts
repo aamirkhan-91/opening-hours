@@ -9,6 +9,10 @@ export const timeToSeconds = (input: string): number => {
 
   const numberNumeric = Number.parseInt(number, 10);
 
+  if (numberNumeric > 12) {
+    throw new Error('Invalid input provided.');
+  }
+
   let seconds = 0;
 
   if (amOrPm.toUpperCase() === 'AM') {
@@ -24,6 +28,10 @@ export const timeToSeconds = (input: string): number => {
       // Add the base seconds at 12 PM then add any additional hours
       seconds = 43200 + numberNumeric * 3600;
     }
+  }
+
+  if (seconds < 0 || seconds > 86399) {
+    throw new Error('Invalid input provided.');
   }
 
   return seconds;
@@ -74,6 +82,10 @@ const secondsToHoursAndMinutes = (
 export const getTimeIn12HourFormat = (seconds: number): string => {
   if (seconds > 86399) {
     throw new Error('Maximum allowed seconds value exceeded.');
+  }
+
+  if (seconds < 0) {
+    throw new Error('Minimum allowed seconds value exceeded.');
   }
 
   const timeBreakdown = secondsToHoursAndMinutes(seconds);

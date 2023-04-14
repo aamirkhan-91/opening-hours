@@ -59,7 +59,18 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
       hoursByDay[day] = formData.get(day) as string;
     });
 
-    data.openingHours = parse(hoursByDay);
+    try {
+      data.openingHours = parse(hoursByDay);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        addNotification({
+          title: 'Invalid input',
+          message: error.message,
+          variant: 'error',
+          duration: 10000,
+        });
+      }
+    }
 
     if (data.openingHours) {
       try {
@@ -113,12 +124,13 @@ const SuggestionDialog: React.FC<SuggestionDialogProps> = ({ show, onClose }) =>
   return (
     <>
       <CSSTransition unmountOnExit timeout={300} in={show} classNames='backdrop'>
-        <div className='fixed left-0 top-0 z-[10] h-full w-full bg-black' role='presentation' />
+        <div className='pointer-events-none fixed left-0 top-0 z-[10] h-full w-full bg-black' role='presentation' />
       </CSSTransition>
       <CSSTransition unmountOnExit timeout={300} in={show} classNames='dialog'>
         <FocusTrap
           focusTrapOptions={{
             escapeDeactivates: false,
+            allowOutsideClick: true,
           }}
         >
           <div
