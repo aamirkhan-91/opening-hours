@@ -22,7 +22,8 @@ const RestaurantListItem: React.FC<RestaurantListItemProps> = ({ restaurant }) =
         if (ref.current) {
           ref.current.scrollIntoView({
             behavior: 'smooth',
-            inline: 'end',
+            block: 'nearest',
+            inline: 'nearest',
           });
         }
       }, 0);
