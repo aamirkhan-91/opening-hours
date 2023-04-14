@@ -8,7 +8,7 @@ describe('parser:parse', () => {
     const input: HoursByDayFormData = {
       monday: '9 AM - 3 PM, 6 PM - 10 PM',
       tuesday: '9 AM - 11 AM, 12 PM - 1 AM',
-      wednesday: '9 AM - 10 PM',
+      wednesday: null,
       thursday: null,
       friday: '12 PM - 1 AM',
       saturday: '12 PM - 12 AM',
@@ -57,14 +57,6 @@ describe('parser:parse', () => {
           type: 'close',
           value: 3600,
         },
-        {
-          type: 'open',
-          value: 32400,
-        },
-        {
-          type: 'close',
-          value: 79200,
-        },
       ],
       thursday: [],
       friday: [
@@ -98,5 +90,17 @@ describe('parser:parse', () => {
     expect(parse(input)).toEqual(output);
   });
 
-  // TODO: Add throwError test case for invalid data after adding it to parser
+  test('it throws an error if supplied with a correctly formatted input with invalid numeric values', () => {
+    const input: HoursByDayFormData = {
+      monday: '50 AM - 3 PM, 6 PM - 10 PM',
+      tuesday: null,
+      wednesday: null,
+      thursday: null,
+      friday: null,
+      saturday: null,
+      sunday: null,
+    };
+
+    expect(() => parse(input)).toThrowError();
+  });
 });
